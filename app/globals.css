@@ -68,11 +68,13 @@ body {
   background-color: #060A0F;
   color: #F0F6FC;
   font-family: var(--font-inter-var), 'Inter', sans-serif;
-  cursor: none;
 }
 
-@media (pointer: coarse) {
-  body { cursor: auto; }
+/* Hide native cursor on all elements on desktop */
+@media (pointer: fine) {
+  *, *::before, *::after {
+    cursor: none !important;
+  }
 }
 
 /* Utility classes */

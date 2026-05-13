@@ -9,23 +9,31 @@ export default function CustomCursor() {
 
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return
-    setVisible(true)
 
     const cursor = cursorRef.current
     const ring = ringRef.current
     if (!cursor || !ring) return
 
-    let mouseX = window.innerWidth / 2
-    let mouseY = window.innerHeight / 2
-    let ringX = mouseX
-    let ringY = mouseY
+    // Start offscreen so there's no flash at (0,0)
+    let mouseX = -100
+    let mouseY = -100
+    let ringX = -100
+    let ringY = -100
     let hovering = false
     let rafId: number
+    let hasMoved = false
 
     const onMouseMove = (e: MouseEvent) => {
       mouseX = e.clientX
       mouseY = e.clientY
       cursor.style.transform = `translate(${mouseX - 4}px, ${mouseY - 4}px)`
+      if (!hasMoved) {
+        // Snap ring to cursor on first move to avoid it sliding from corner
+        ringX = mouseX
+        ringY = mouseY
+        hasMoved = true
+        setVisible(true)
+      }
     }
 
     const animateRing = () => {
@@ -41,7 +49,7 @@ export default function CustomCursor() {
     document.addEventListener('mousemove', onMouseMove)
     rafId = requestAnimationFrame(animateRing)
 
-    document.querySelectorAll('a, button').forEach((el) => {
+    document.querySelectorAll('a, button, input, textarea, select, label').forEach((el) => {
       el.addEventListener('mouseenter', onEnter)
       el.addEventListener('mouseleave', onLeave)
     })
@@ -49,29 +57,34 @@ export default function CustomCursor() {
     return () => {
       document.removeEventListener('mousemove', onMouseMove)
       cancelAnimationFrame(rafId)
-      document.querySelectorAll('a, button').forEach((el) => {
+      document.querySelectorAll('a, button, input, textarea, select, label').forEach((el) => {
         el.removeEventListener('mouseenter', onEnter)
         el.removeEventListener('mouseleave', onLeave)
       })
     }
   }, [])
 
-  if (!visible) return null
-
   return (
     <>
-      {/* Small solid dot */}
       <div
         ref={cursorRef}
         className="fixed top-0 left-0 w-2 h-2 rounded-full bg-accent-cyan pointer-events-none z-[99999]"
-        style={{ willChange: 'transform', boxShadow: '0 0 6px #00E5FF' }}
+        style={{
+          willChange: 'transform',
+          boxShadow: '0 0 6px #00E5FF',
+          opacity: visible ? 1 : 0,
+          transition: 'opacity 0.2s',
+        }}
         aria-hidden="true"
       />
-      {/* Lagging ring */}
       <div
         ref={ringRef}
-        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-accent-cyan/60 pointer-events-none z-[99998] transition-[opacity] duration-200"
-        style={{ willChange: 'transform' }}
+        className="fixed top-0 left-0 w-8 h-8 rounded-full border border-accent-cyan/60 pointer-events-none z-[99998]"
+        style={{
+          willChange: 'transform',
+          opacity: visible ? 1 : 0,
+          transition: 'opacity 0.2s, transform 0s',
+        }}
         aria-hidden="true"
       />
     </>
