@@ -27,7 +27,7 @@ const testimonials = [
   {
     initials: 'PS',
     name: 'Paulo Souza',
-    company: 'Caoeste Transportes',
+    company: 'Cioeste Transportes',
     text: 'Fizemos a identidade visual completa da nossa sede. A equipe foi super atenciosa, sugeriu soluções que nem imaginávamos e o prazo foi cumprido certinho.',
     stars: 5,
     color: 'from-accent-yellow/20 to-accent-yellow/5',
