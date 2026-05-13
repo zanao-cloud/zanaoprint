@@ -286,7 +286,7 @@ export default function Contact() {
                   <div className="w-9 h-9 rounded-lg bg-accent-cyan/10 flex items-center justify-center shrink-0">
                     <MapPin size={16} className="text-accent-cyan" />
                   </div>
-                  <span className="text-sm">Grande São Paulo e interior do Estado</span>
+                  <span className="text-sm">Av. Benedito Alves Turíbio, 1574 - Bandeiras, Osasco - SP, 06160-004</span>
                 </div>
 
                 <a
@@ -315,9 +315,9 @@ export default function Contact() {
 
             <div className="bg-surface-2 rounded-xl border border-border p-5">
               <p className="text-text-secondary text-xs leading-relaxed">
-                <span className="text-accent-cyan font-semibold">Atendemos</span> toda a Grande
-                São Paulo e interior do estado de São Paulo. Entre em contato e agende uma
-                visita técnica gratuita.
+                <span className="text-accent-cyan font-semibold">Endereço:</span> Av. Benedito
+                Alves Turíbio, 1574 - Bandeiras, Osasco - SP, 06160-004. Atendemos também
+                toda a Grande São Paulo e interior.
               </p>
             </div>
           </motion.div>

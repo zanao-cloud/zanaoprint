@@ -81,7 +81,8 @@ export default function Footer() {
                   (11) 98285-7385
                 </a>
               </p>
-              <p>Grande São Paulo e interior</p>
+              <p>Av. Benedito Alves Turíbio, 1574</p>
+              <p>Bandeiras, Osasco - SP, 06160-004</p>
               <p className="font-mono text-xs text-border pt-2">
                 CNPJ: 57.566.841/0001-88
               </p>
