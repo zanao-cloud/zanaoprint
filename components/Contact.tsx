@@ -66,7 +66,23 @@ export default function Contact() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (validate()) setSubmitted(true)
+    if (!validate()) return
+
+    const text = [
+      `Olá! Vim pelo site zanaoprint.com.br`,
+      ``,
+      `*Nome:* ${form.nome}`,
+      `*E-mail:* ${form.email}`,
+      `*Telefone:* ${form.telefone}`,
+      `*Serviço:* ${form.servico}`,
+      ``,
+      `*Mensagem:*`,
+      form.mensagem,
+    ].join('\n')
+
+    const url = `https://wa.me/5511982857385?text=${encodeURIComponent(text)}`
+    window.open(url, '_blank', 'noopener,noreferrer')
+    setSubmitted(true)
   }
 
   const inputCls = (field: string) =>
@@ -113,10 +129,10 @@ export default function Contact() {
                   <Send size={28} className="text-accent-cyan" />
                 </div>
                 <h3 className="font-orbitron font-bold text-2xl text-white mb-2">
-                  Mensagem enviada!
+                  WhatsApp aberto!
                 </h3>
                 <p className="text-text-secondary">
-                  Entraremos em contato em breve. Obrigado!
+                  Sua mensagem foi preparada no WhatsApp. Só enviar!
                 </p>
                 <button
                   onClick={() => { setSubmitted(false); setForm({ nome: '', email: '', telefone: '', servico: '', mensagem: '' }) }}
