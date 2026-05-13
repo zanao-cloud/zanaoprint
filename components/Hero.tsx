@@ -18,11 +18,11 @@ const particles = [
 
 const container: Variants = {
   hidden: {},
-  visible: { transition: { staggerChildren: 0.18, delayChildren: 0.3 } },
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
 }
 const item: Variants = {
-  hidden: { opacity: 0, y: 50 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+  hidden: { opacity: 0, y: 30 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 }
 
 export default function Hero() {

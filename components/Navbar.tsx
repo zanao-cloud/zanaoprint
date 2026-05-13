@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Menu, X } from 'lucide-react'
+import InstagramIcon from '@/components/ui/InstagramIcon'
 
 const links = [
   { label: 'Home', href: '#home' },
@@ -83,6 +84,15 @@ export default function Navbar() {
 
           {/* CTA */}
           <div className="hidden lg:flex items-center gap-4">
+            <a
+              href="https://instagram.com/zanaoprint"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram @zanaoprint"
+              className="text-text-secondary hover:text-accent-magenta transition-colors duration-200"
+            >
+              <InstagramIcon size={18} />
+            </a>
             <a
               href="#contato"
               className="px-5 py-2.5 bg-accent-magenta hover:bg-accent-magenta-dark text-white text-sm font-semibold rounded-lg transition-all duration-200 hover:shadow-[0_0_20px_rgba(255,0,110,0.4)]"

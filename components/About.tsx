@@ -6,8 +6,8 @@ import { CheckCircle2 } from 'lucide-react'
 const badges = ['✦ Qualidade', '✦ Pontualidade', '✦ Experiência']
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, x: -30 },
-  visible: { opacity: 1, x: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0, transition: { duration: 0.35, ease: 'easeOut' } },
 }
 
 export default function About() {

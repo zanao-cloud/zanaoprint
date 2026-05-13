@@ -4,9 +4,10 @@ import { motion, type Variants } from 'framer-motion'
 import AnimatedCounter from '@/components/ui/AnimatedCounter'
 
 const stats = [
-  { target: 67, prefix: '+', label: 'Projetos Entregues', desc: 'trabalhos concluídos com excelência' },
-  { target: 13, prefix: '+', label: 'Empresas Atendidas', desc: 'clientes satisfeitos em toda a região' },
-  { target: 6, prefix: '+', label: 'Cidades Atendidas', desc: 'presente em toda a Grande São Paulo' },
+  { target: 5, prefix: '+', suffix: ' anos', label: 'de Experiência', desc: 'no mercado de comunicação visual' },
+  { target: 50, prefix: '+', suffix: '', label: 'Clientes Atendidos', desc: 'empresas satisfeitas em toda a região' },
+  { target: 67, prefix: '+', suffix: '', label: 'Projetos Entregues', desc: 'trabalhos concluídos com excelência' },
+  { target: 3, prefix: '+', suffix: '', label: 'Cidades Atendidas', desc: 'cobrindo Grande SP e interior' },
 ]
 
 const containerVariants: Variants = {
@@ -30,25 +31,25 @@ export default function Stats() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.3 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8"
+          className="grid grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6"
         >
-          {stats.map(({ target, prefix, label, desc }) => (
+          {stats.map(({ target, prefix, suffix, label, desc }) => (
             <motion.div
               key={label}
               variants={itemVariants}
-              className="relative text-center p-8 rounded-xl bg-background border border-border overflow-hidden group hover:border-accent-cyan/40 transition-colors duration-300"
+              className="relative text-center p-5 lg:p-8 rounded-xl bg-background border border-border overflow-hidden group hover:border-accent-cyan/40 transition-colors duration-300"
             >
               <div
                 className="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-accent-cyan to-accent-magenta"
                 aria-hidden="true"
               />
-              <div className="font-mono font-black text-5xl lg:text-6xl text-accent-cyan text-glow-cyan mb-2">
-                <AnimatedCounter target={target} prefix={prefix} />
+              <div className="font-mono font-black text-3xl sm:text-4xl lg:text-5xl text-accent-cyan text-glow-cyan mb-2">
+                <AnimatedCounter target={target} prefix={prefix} suffix={suffix} />
               </div>
-              <div className="font-orbitron font-bold text-text-primary text-lg mb-1 tracking-wide">
+              <div className="font-orbitron font-bold text-text-primary text-sm lg:text-base mb-1 tracking-wide leading-tight">
                 {label}
               </div>
-              <div className="text-text-secondary text-sm">{desc}</div>
+              <div className="text-text-secondary text-xs hidden sm:block">{desc}</div>
             </motion.div>
           ))}
         </motion.div>

@@ -1,4 +1,5 @@
-import { AtSign, MessageCircle } from 'lucide-react'
+import { MessageCircle } from 'lucide-react'
+import InstagramIcon from '@/components/ui/InstagramIcon'
 
 const navLinks = [
   { label: 'Serviços', href: '#servicos' },
@@ -32,7 +33,7 @@ export default function Footer() {
                 aria-label="Instagram @zanaoprint"
                 className="w-9 h-9 rounded-lg bg-surface-2 border border-border flex items-center justify-center text-text-secondary hover:text-accent-magenta hover:border-accent-magenta/50 transition-colors"
               >
-                <AtSign size={16} />
+                <InstagramIcon size={16} />
               </a>
               <a
                 href="https://wa.me/5511982857385"

@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { Mail, Phone, MapPin, AtSign, Send, MessageCircle, ChevronDown } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, MessageCircle, ChevronDown } from 'lucide-react'
+import InstagramIcon from '@/components/ui/InstagramIcon'
 
 interface FormState {
   nome: string
@@ -301,7 +302,7 @@ export default function Contact() {
                   className="flex items-center gap-3 text-text-secondary hover:text-accent-magenta transition-colors group"
                 >
                   <div className="w-9 h-9 rounded-lg bg-accent-magenta/10 flex items-center justify-center shrink-0 group-hover:bg-accent-magenta/20 transition-colors">
-                    <AtSign size={16} className="text-accent-magenta" />
+                    <InstagramIcon size={16} className="text-accent-magenta" />
                   </div>
                   <span className="text-sm">@zanaoprint</span>
                 </a>
@@ -318,12 +319,17 @@ export default function Contact() {
               Chamar no WhatsApp
             </a>
 
-            <div className="bg-surface-2 rounded-xl border border-border p-5">
-              <p className="text-text-secondary text-xs leading-relaxed">
-                <span className="text-accent-cyan font-semibold">Endereço:</span> Av. Benedito
-                Alves Turíbio, 1574 - Bandeiras, Osasco - SP, 06160-004. Atendemos também
-                toda a Grande São Paulo e interior.
-              </p>
+            <div className="rounded-xl border border-border overflow-hidden">
+              <iframe
+                title="Localização Zanão Print"
+                src="https://maps.google.com/maps?q=Av.+Benedito+Alves+Turibio,+1574,+Bandeiras,+Osasco,+SP,+06160-004&output=embed&z=16"
+                width="100%"
+                height="200"
+                style={{ border: 0 }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+              />
             </div>
           </motion.div>
         </div>
