@@ -282,12 +282,17 @@ export default function Contact() {
                   <span className="text-sm">(11) 98285-7385</span>
                 </a>
 
-                <div className="flex items-center gap-3 text-text-secondary">
-                  <div className="w-9 h-9 rounded-lg bg-accent-cyan/10 flex items-center justify-center shrink-0">
+                <a
+                  href="https://www.google.com/maps/search/?api=1&query=Av.+Benedito+Alves+Tur%C3%ADbio,+1574,+Bandeiras,+Osasco,+SP,+06160-004"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 text-text-secondary hover:text-accent-cyan transition-colors group"
+                >
+                  <div className="w-9 h-9 rounded-lg bg-accent-cyan/10 flex items-center justify-center shrink-0 group-hover:bg-accent-cyan/20 transition-colors">
                     <MapPin size={16} className="text-accent-cyan" />
                   </div>
                   <span className="text-sm">Av. Benedito Alves Turíbio, 1574 - Bandeiras, Osasco - SP, 06160-004</span>
-                </div>
+                </a>
 
                 <a
                   href="https://instagram.com/zanaoprint"

@@ -81,9 +81,16 @@ export default function Footer() {
                   (11) 98285-7385
                 </a>
               </p>
-              <p>Av. Benedito Alves Turíbio, 1574</p>
-              <p>Bandeiras, Osasco - SP, 06160-004</p>
-              <p className="font-mono text-xs text-border pt-2">
+              <a
+                href="https://www.google.com/maps/search/?api=1&query=Av.+Benedito+Alves+Tur%C3%ADbio,+1574,+Bandeiras,+Osasco,+SP,+06160-004"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-accent-cyan transition-colors"
+              >
+                Av. Benedito Alves Turíbio, 1574<br />
+                Bandeiras, Osasco - SP, 06160-004
+              </a>
+              <p className="font-mono text-xs text-text-secondary pt-2">
                 CNPJ: 57.566.841/0001-88
               </p>
             </div>
