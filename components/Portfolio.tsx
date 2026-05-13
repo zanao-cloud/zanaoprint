@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import Image from 'next/image'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Layers, Zap, Umbrella, MapPin, Sparkles, ArrowRight, type LucideIcon } from 'lucide-react'
 
@@ -13,6 +14,7 @@ interface Project {
   description: string
   gradient: string
   icon: LucideIcon
+  image?: string | null
 }
 
 const projects: Project[] = [
@@ -23,6 +25,7 @@ const projects: Project[] = [
     description: 'Revestimento completo em ACM com iluminação embutida',
     gradient: 'linear-gradient(135deg, rgba(0,229,255,0.25) 0%, rgba(0,176,204,0.1) 50%, #0D1117 100%)',
     icon: Layers,
+    image: '/images/portfolio/projeto-1.jpg',
   },
   {
     id: 2,
@@ -31,6 +34,7 @@ const projects: Project[] = [
     description: 'Painel iluminado com LED de alta eficiência',
     gradient: 'linear-gradient(135deg, rgba(255,0,110,0.25) 0%, rgba(204,0,88,0.1) 50%, #0D1117 100%)',
     icon: Zap,
+    image: '/images/portfolio/projeto-2.jpg',
   },
   {
     id: 3,
@@ -39,6 +43,7 @@ const projects: Project[] = [
     description: 'Sistema completo de sinalização interna e externa',
     gradient: 'linear-gradient(135deg, rgba(0,229,255,0.15) 0%, rgba(255,0,110,0.15) 50%, #0D1117 100%)',
     icon: MapPin,
+    image: '/images/portfolio/projeto-3.jpg',
   },
   {
     id: 4,
@@ -47,6 +52,7 @@ const projects: Project[] = [
     description: 'Toldo sob medida com lona importada',
     gradient: 'linear-gradient(135deg, rgba(255,229,0,0.25) 0%, rgba(200,180,0,0.1) 50%, #0D1117 100%)',
     icon: Umbrella,
+    image: '/images/portfolio/projeto-4.jpg',
   },
   {
     id: 5,
@@ -55,6 +61,7 @@ const projects: Project[] = [
     description: 'Identidade visual completa com ACM e letra caixa',
     gradient: 'linear-gradient(135deg, rgba(0,229,255,0.2) 0%, rgba(0,229,255,0.05) 50%, #0D1117 100%)',
     icon: Layers,
+    image: '/images/portfolio/projeto-5.jpg',
   },
   {
     id: 6,
@@ -63,6 +70,7 @@ const projects: Project[] = [
     description: 'Ambientação completa para showroom automotivo',
     gradient: 'linear-gradient(135deg, rgba(255,229,0,0.15) 0%, rgba(255,0,110,0.15) 50%, #0D1117 100%)',
     icon: Sparkles,
+    image: '/images/portfolio/projeto-6.jpg',
   },
   {
     id: 7,
@@ -71,6 +79,7 @@ const projects: Project[] = [
     description: 'Totem luminoso com visibilidade máxima',
     gradient: 'linear-gradient(135deg, rgba(255,0,110,0.2) 0%, rgba(255,0,110,0.05) 50%, #0D1117 100%)',
     icon: Zap,
+    image: null,
   },
   {
     id: 8,
@@ -79,6 +88,7 @@ const projects: Project[] = [
     description: 'Sinalização de emergência e identidade visual',
     gradient: 'linear-gradient(135deg, rgba(0,229,255,0.1) 0%, rgba(255,229,0,0.1) 50%, #0D1117 100%)',
     icon: MapPin,
+    image: null,
   },
 ]
 
@@ -129,7 +139,7 @@ export default function Portfolio() {
         {/* Grid */}
         <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           <AnimatePresence mode="popLayout">
-            {filtered.map(({ id, title, category, description, gradient, icon: Icon }) => (
+            {filtered.map(({ id, title, category, description, gradient, icon: Icon, image }) => (
               <motion.div
                 key={id}
                 layout
@@ -138,20 +148,33 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3 }}
                 className="group relative aspect-[4/3] rounded-xl overflow-hidden border border-border hover:border-accent-cyan/40 transition-colors duration-300 cursor-pointer"
-                style={{ background: gradient }}
+                style={image ? undefined : { background: gradient }}
               >
-                {/* Icon watermark */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                  <Icon size={80} strokeWidth={0.8} />
-                </div>
+                {/* Real image */}
+                {image && (
+                  <Image
+                    src={image}
+                    alt={title}
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover"
+                  />
+                )}
+
+                {/* Icon watermark (placeholder only) */}
+                {!image && (
+                  <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                    <Icon size={80} strokeWidth={0.8} />
+                  </div>
+                )}
 
                 {/* Category badge */}
-                <div className="absolute top-3 left-3 px-2 py-1 bg-background/70 backdrop-blur-sm rounded text-accent-cyan text-xs font-mono">
+                <div className="absolute top-3 left-3 px-2 py-1 bg-background/70 backdrop-blur-sm rounded text-accent-cyan text-xs font-mono z-10">
                   {category}
                 </div>
 
                 {/* Hover overlay */}
-                <div className="absolute inset-0 bg-background/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center">
+                <div className="absolute inset-0 bg-background/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center p-4 text-center z-10">
                   <Icon size={32} className="text-accent-cyan mb-3" strokeWidth={1.5} />
                   <h3 className="font-orbitron font-bold text-text-primary text-sm mb-1 leading-snug">
                     {title}
