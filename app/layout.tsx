@@ -36,6 +36,15 @@ export const metadata: Metadata = {
     'Zanão Print',
   ],
   authors: [{ name: 'Zanão Print' }],
+  icons: {
+    icon: [
+      { url: '/favicon-16x16.png', sizes: '16x16', type: 'image/png' },
+      { url: '/favicon-32x32.png', sizes: '32x32', type: 'image/png' },
+      { url: '/favicon-192x192.png', sizes: '192x192', type: 'image/png' },
+    ],
+    shortcut: '/favicon.ico',
+  },
+  manifest: '/site.webmanifest',
   openGraph: {
     title: 'Zanão Print | Comunicação Visual',
     description: 'Transformamos marcas em referência visual.',
